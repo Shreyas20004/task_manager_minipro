@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if task %}Edit Task{% else %}Add Task{% endif %}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{% if task %}Edit Task{% else %}Add Task{% endif %}</h1>
+        <form id="taskForm" action="{% if task %}{% url 'update-task' task.id %}{% else %}{% url 'create-task' %}{% endif %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% if task %}Update{% else %}Add{% endif %}</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
