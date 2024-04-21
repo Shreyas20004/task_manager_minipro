@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .modals import Task
 from .forms import TaskModalForm
+from django.http import HttpResponse
 
 def register(request):
     return render(request, 'register.html')
@@ -22,10 +23,18 @@ def home(request):
     
     return render(request, 'index.html',context=context)
 
-def create_task_form(request):
+def create_task(request):
     form = TaskModalForm()
-    context =  {"form":form}
+    if request.method=="POST":
+        form =TaskModalForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("saved!!")
+        context = { "form" : form }
     return render(request, 'task-form.html',context=context)
 
 
-
+def view_task(request):
+   tasks = Task.objects.all()
+   context = { "tasks" : tasks }
+   return render(request, 'task-form.html',context=context)

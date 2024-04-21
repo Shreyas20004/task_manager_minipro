@@ -5,4 +5,9 @@ urlpatterns = [
     path('login/', views.login),
     path('register/',views.register),
     
+    
+    #cruds
+    path('task-form/',views.create_task),
+    path('read-task/',views.view_task),
+    
 ]
