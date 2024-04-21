@@ -14,7 +14,26 @@ def base(request):
     return render(request ,'base.html')
 
 def home(request):
-    return render(request, 'index.html')
+    clientList = [
+        {
+            'id':1,
+            'name':'John Doe',
+            'job':"Web Developer",
+            
+            
+        },
+        
+        {
+            'id':2,
+            'name':'Luke warren',
+            'job':"Architect",
+            
+            
+        }
+    ]
+    
+    context={'client_list':clientList}
+    return render(request, 'index.html',context=context)
 
 
 
