@@ -2,9 +2,20 @@ from django.shortcuts import render,redirect
 from .modals import Task
 from .forms import TaskModalForm
 from django.http import HttpResponse
+from .forms import CreateUserForm, LoginForm, CreateTaskForm,
+
+from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate, login
+
+from django.contrib.auth.decorators import login_required
+
+def home(request):
+    return render(request, 'index.html')
 
 def register(request):
-    return render(request, 'register.html')
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
 
 def login(request):
      return render(request, 'login.html')
@@ -38,3 +49,25 @@ def view_task(request):
    tasks = Task.objects.all()
    context = { "tasks" : tasks }
    return render(request, 'task-form.html',context=context)
+
+
+@Login_required(login_url='my-login')
+
+def dashboard(request):
+    return render(request, 'profile/dashboard.html')
+
+
+
+
+
+@Login_required(login_url='my-login')
+
+def createTask(request):
+    form = CreateTaskForm()
+    if request.method == 'POST':
+        form = CreateTaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('') 
+    context = {'form':form}
+    return render(request, 'profile/create-task.html', context=context)

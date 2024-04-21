@@ -10,4 +10,17 @@ urlpatterns = [
     path('task-form/',views.create_task),
     path('read-task/',views.view_task),
     
+
+    path('my-login', views.my_login, name="my-login"),
+
+
+    path('dashboard', views.dashboard, name="dashboard"),
+
+
+    path('create-task', views.create_task, name="create-task"),
+
+
+
+
+
 ]

@@ -1,15 +1,16 @@
 from django.db import models
 
+from django.contrib.auth.models import User
 # Create your models here.
 class Task(models.Model):
-    Title = models.CharField(max_length=85)
+    Title = models.CharField(max_length=100, null=True)
     
-    content = models.CharField(max_length=300)
+    content = models.CharField(max_length=1000, null=True, blank=True)
     
-    date_posted = models.DateField( auto_now_add=True)
+    date_posted = models.DateField( auto_now_add=True, null=True)
     
-class Review(models.Model):
-    Reviewer_name = models.CharField(max_length=85)
-    Reviewer_title = models.CharField(max_length=100)
+# class Review(models.Model):
+#     Reviewer_name = models.CharField(max_length=85)
+#     Reviewer_title = models.CharField(max_length=100)
     
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
