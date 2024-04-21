@@ -1,5 +1,31 @@
-{% include 'base.html'%}
+{% load static %}
 
-<h2>This is our dashboard page!</h2>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width-devide-width", initial-scale=1, maximum-scale=1/>
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    {% include 'base.html' %}
 
-<a href="{% url 'user-log-out' %}">Login</a>
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h3> This is our Dashboard page ! </h3>
+        <hr>
+        <a href="{% url 'create-task' %}">Create task</a>
+        <br><br>
+        <a href="{% url 'view-tasks' %}">View task</a>
+        <br><br>
+
+        <a href="{% url 'user-log-out' %}">Login</a>
+    </div>
+</html>
+
+
+
+
+
+
+

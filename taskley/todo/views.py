@@ -16,6 +16,11 @@ def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("my-login")
+            context = {'form': form}
+    return render(request, 'register.html', context=context)
 
 def login(request):
      return render(request, 'login.html')
@@ -67,7 +72,9 @@ def createTask(request):
     if request.method == 'POST':
         form = CreateTaskForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('') 
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            return redirect('dashboard') 
     context = {'form':form}
     return render(request, 'profile/create-task.html', context=context)

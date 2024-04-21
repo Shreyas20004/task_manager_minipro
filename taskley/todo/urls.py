@@ -20,6 +20,10 @@ urlpatterns = [
     path('create-task', views.create_task, name="create-task"),
 
 
+    path('view-tasks', views.view_task, name="view-tasks"),
+
+
+
 
 
 
