@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .modals import Task
 
 def register(request):
     return render(request, 'register.html')
@@ -14,25 +14,11 @@ def base(request):
     return render(request ,'base.html')
 
 def home(request):
-    clientList = [
-        {
-            'id':1,
-            'name':'John Doe',
-            'job':"Web Developer",
-            
-            
-        },
-        
-        {
-            'id':2,
-            'name':'Luke warren',
-            'job':"Architect",
-            
-            
-        }
-    ]
     
-    context={'client_list':clientList}
+    query_all_data = Task.objects.all()
+    
+    context = {'tasks':query_all_data}
+    
     return render(request, 'index.html',context=context)
 
 
