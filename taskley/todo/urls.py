@@ -10,15 +10,16 @@ urlpatterns = [
     path('dashboard', views.dashboard, name="dashboard"),
 
 
-    path('my-login', views.my_login, name="my-login"),
+    path('create-task', views.createTask, name="create-task"),
+
+
+    path('view-task', views.viewTask, name="view-tasks" ),
+
     
-    path("user-logout", views.my_logout, name='user-logout'),
+    path('update-task/<str:pk>/', views.updateTask, name="update-tasks" ),
 
+    path('delete-task/<str:pk>/', views.deleteTask, name="delete-tasks" ),
 
-    path('create-task', views.create_task, name="create-task"),
-
-
-    path('view-tasks', views.view_task, name="view-tasks" ),
 
 
 

@@ -79,11 +79,32 @@ def createTask(request):
 
 
 
-Login_required(login_url='my-login')
-
-def view_task(request):
+@Login_required(login_url='my-login')
+def viewTask(request):
     current_user = request.user.id
     task = Task.objects.all().filter(user=current_user)
     context = {'task':task}
     return render(request, 'profile/view-task.html', context=context)
 
+
+@Login_required(login_url='my-login')
+def updateTask(request, pk):
+    task = Task.objects.get(id=pk)
+    form = CreateTaskForm(instance=task)
+    if request.method == 'POST':
+        form =  CreateTaskForm(request.POST, instance=task)
+
+        if form.is_valid():
+            form.save()
+            return redirect('view-task')
+        
+    context = {'form': form}    
+    return render(request, 'profile/update-task.html', context=context)
+
+
+def deleteTask(request, pk):
+    task = Task.objects.get(id=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('view-task')
+    return render(request, 'profile/delete-task.html')
