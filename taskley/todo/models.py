@@ -9,8 +9,8 @@ class Task(models.Model):
     
     date_posted = models.DateField( auto_now_add=True, null=True)
     
-class Review(models.Model):
-    Reviewer_name = models.CharField(max_length=85)
-    Reviewer_title = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
-    task = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    
+    

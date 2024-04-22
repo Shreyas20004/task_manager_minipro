@@ -15,13 +15,13 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
         <h3>Create a Task ! </h3>
-        <hr>
+        <br>
         <br>
         <form method="post" autocomplete="off">
             {% csrf_token %}
-            {{form.title|as _crispy_field}}
+            {{form.Title|as_crispy_field}}
             <br><br>
-            {{form.content|as _crispy_field}}
+            {{form.content|as_crispy_field}}
             <br><br>
             <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Submit">
         </form>

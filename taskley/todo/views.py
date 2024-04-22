@@ -73,7 +73,8 @@ def createTask(request):
             task = form.save(commit=False)
             task.user = request.user
             task.save()
-            return redirect('view-task') 
+            return redirect("view-tasks")
+            
     context = {'form':form}
     return render(request, 'profile/create-task.html', context=context)
 
@@ -83,7 +84,7 @@ def createTask(request):
 @login_required(login_url='my-login')
 def viewTask(request):
     current_user = request.user.id
-    task = Task.objects.all().filter(user=current_user)
+    task = Task.objects.all().filter()
     context = {'task':task}
     return render(request, 'profile/view-task.html', context=context)
 
@@ -97,7 +98,7 @@ def updateTask(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect('view-task')
+            return redirect('view-tasks')
         
     context = {'form': form}    
     return render(request, 'profile/update-task.html', context=context)
@@ -107,5 +108,5 @@ def deleteTask(request, pk):
     task = Task.objects.get(id=pk)
     if request.method == 'POST':
         task.delete()
-        return redirect('view-task')
+        return redirect('view-tasks')
     return render(request, 'profile/delete-task.html')
