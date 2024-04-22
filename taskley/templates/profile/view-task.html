@@ -16,19 +16,21 @@
     <hr>
     <br>
 
-    <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 20px;">
+    
     
         {% for tsk in task %}
 
-        <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 20px;">
+        <div class="container bg-white shadow-md p-5 form-layout " style="margin-top: 20px;">
         
-            {{tsk.title}}
+            {{tsk.Title}}
 
-            <br><br>
+            <br>
+            <hr>
 
             {{ tsk.content }}
 
-            <br><br>
+            <br>
+            <br>
 
             <a href="{% url 'update-tasks' tsk.id%}">Update task</a>
 
@@ -40,6 +42,8 @@
 
         </div>
         {% endfor %}
+    <div>
+        br
     </div>
 </html>
 
