@@ -14,6 +14,8 @@ urlpatterns = [
 
 
     path('view-task', views.viewTask, name="view-tasks" ),
+    path('user-login', views.my_login, name="my-login" ),
+    path('user-logout', views.user_logout, name="user-logout" ),
 
     
     path('update-task/<str:pk>/', views.updateTask, name="update-tasks" ),
