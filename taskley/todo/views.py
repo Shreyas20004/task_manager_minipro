@@ -57,7 +57,6 @@ def view_task(request):
 
 
 @Login_required(login_url='my-login')
-
 def dashboard(request):
     return render(request, 'profile/dashboard.html')
 
@@ -66,7 +65,6 @@ def dashboard(request):
 
 
 @Login_required(login_url='my-login')
-
 def createTask(request):
     form = CreateTaskForm()
     if request.method == 'POST':
@@ -75,10 +73,18 @@ def createTask(request):
             task = form.save(commit=False)
             task.user = request.user
             task.save()
-            return redirect('dashboard') 
+            return redirect('view-task') 
     context = {'form':form}
     return render(request, 'profile/create-task.html', context=context)
 
-def updateTask(request):
-    context = {'form':form}
-    return render(request, 'profile/update-task.html', context=context)
+
+
+
+Login_required(login_url='my-login')
+
+def viewTask(request):
+    current_user = request.user.id
+    task = Task.objects.all().filter(user=current_user)
+    context = {'task':task}
+    return render(request, 'profile/view-task.html', context=context)
+
