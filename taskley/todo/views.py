@@ -18,7 +18,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("my-login")
-            context = {'form': form}
+        
+    context = {'form': form}
     return render(request, 'register.html', context=context)
 
 
@@ -55,7 +56,7 @@ def view_task(request):
    return render(request, 'task-form.html',context=context)
 
 
-@Login_required(login_url='my-login')
+@login_required(login_url='my-login')
 def dashboard(request):
     return render(request, 'profile/dashboard.html')
 
@@ -63,7 +64,7 @@ def user_logout(request):
     auth.logout(request)
     return redirect("")
 
-@Login_required(login_url='my-login')
+@login_required(login_url='my-login')
 def createTask(request):
     form = CreateTaskForm()
     if request.method == 'POST':
@@ -79,7 +80,7 @@ def createTask(request):
 
 
 
-@Login_required(login_url='my-login')
+@login_required(login_url='my-login')
 def viewTask(request):
     current_user = request.user.id
     task = Task.objects.all().filter(user=current_user)
@@ -87,7 +88,7 @@ def viewTask(request):
     return render(request, 'profile/view-task.html', context=context)
 
 
-@Login_required(login_url='my-login')
+@login_required(login_url='my-login')
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
     form = CreateTaskForm(instance=task)
