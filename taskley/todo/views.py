@@ -78,3 +78,7 @@ def createTask(request):
             return redirect('dashboard') 
     context = {'form':form}
     return render(request, 'profile/create-task.html', context=context)
+
+def updateTask(request):
+    context = {'form':form}
+    return render(request, 'profile/update-task.html', context=context)
