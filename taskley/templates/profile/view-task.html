@@ -24,6 +24,17 @@
             <br><br>
 
             {{ tsk.content }}
+
+            <br><br>
+
+            <a href="{% url 'view-tasks' %}">Update task</a>
+
+            <br><br>
+
+            <a href="{% url 'view-tasks' %}">Delete task</a>
+
+            <br><br>
+
         </div>
         {% endfor %}
     </div>

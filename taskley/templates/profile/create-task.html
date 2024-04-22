@@ -21,7 +21,8 @@
             {% csrf_token %}
             {{form.title|as_crispy_field}}
             <br><br>
-            
+            {{form.content|as_crispy_field}}
+            <br><br>
             <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Submit">
         </form>
     </div>

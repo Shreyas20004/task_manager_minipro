@@ -22,6 +22,8 @@ urlpatterns = [
 
     path('view-tasks', views.view_task, name="view-tasks" ),
 
+    path('view-tasks', views.view_task, name="view-tasks" ),
+
 
 
 
