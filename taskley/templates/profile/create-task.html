@@ -19,8 +19,9 @@
         <br>
         <form method="post" autocomplete="off">
             {% csrf_token %}
-            {{form|crispy}}
-            <br>
+            {{form.title|as_crispy_field}}
+            <br><br>
+            
             <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Submit">
         </form>
     </div>

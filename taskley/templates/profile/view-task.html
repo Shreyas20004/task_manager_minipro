@@ -12,17 +12,19 @@
 
     <br>
 
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <h3> My Tasks </h3>
+    <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 20px;">
+        <h3 class="text-center"> My Tasks </h3>
         <hr>
         {% for tsk in task %}
 
-        {{tsk.title}}
+        <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 20px;">
+        
+            {{tsk.title}}
 
-        <br><br>
+            <br><br>
 
-        {{ tsk.content }}
-
+            {{ tsk.content }}
+        </div>
         {% endfor %}
     </div>
 </html>
