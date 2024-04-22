@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
-from .modals import Task
-from .forms import TaskModalForm
+from .models import Task
 from django.http import HttpResponse
 from .forms import CreateUserForm, LoginForm, CreateTaskForm
 
@@ -22,22 +21,22 @@ def register(request):
             context = {'form': form}
     return render(request, 'register.html', context=context)
 
-def login(request):
-     return render(request, 'login.html')
 
-def dashboard(request):
-     return render(request, 'dashboard.html')
- 
-def base(request):
-    return render(request ,'base.html')
+def my_login(request):
+    form = LoginForm
+    if request.method == "POST":
+        form = LoginForm(request,data=request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get ('password' )
+            user = authenticate (request, username=username, password=password)
+            if user is not None:
+             auth. login (request, user)
+             return redirect ("dashboard")
+    context = { "form" : form }
+    return render(request, 'my-login.html',context=context)
 
-def home(request):
-    
-    query_all_data = Task.objects.all()
-    
-    context = {'tasks':query_all_data}
-    
-    return render(request, 'index.html',context=context)
+
 
 def create_task(request):
     form = TaskModalForm()
@@ -60,9 +59,9 @@ def view_task(request):
 def dashboard(request):
     return render(request, 'profile/dashboard.html')
 
-
-
-
+def user_logout(request):
+    auth.logout(request)
+    return redirect("")
 
 @Login_required(login_url='my-login')
 def createTask(request):
@@ -82,7 +81,7 @@ def createTask(request):
 
 Login_required(login_url='my-login')
 
-def viewTask(request):
+def view_task(request):
     current_user = request.user.id
     task = Task.objects.all().filter(user=current_user)
     context = {'task':task}
