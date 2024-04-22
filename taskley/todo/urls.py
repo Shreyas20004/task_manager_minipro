@@ -22,10 +22,12 @@ urlpatterns = [
     path('create-task', views.createTask, name="create-task"),
 
 
-    path('view-tasks', views.viewTask, name="view-tasks" ),
+    path('view-task', views.viewTask, name="view-tasks" ),
 
     
     path('update-task/<str:pk>/', views.updateTask, name="update-tasks" ),
+
+    path('delete-task/<str:pk>/', views.deleteTask, name="delete-tasks" ),
 
 
 
