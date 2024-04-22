@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .modals import Task
 from .forms import TaskModalForm
 from django.http import HttpResponse
-from .forms import CreateUserForm, LoginForm, CreateTaskForm,
+from .forms import CreateUserForm, LoginForm, CreateTaskForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
