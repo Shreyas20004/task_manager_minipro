@@ -9,7 +9,9 @@ urlpatterns = [
     #cruds
     path('task-form/',views.create_task),
     path('read-task/',views.view_task),
+    path('update-task',views.update_task),
     
+    # Applications
 
     path('my-login', views.my_login, name="my-login"),
 
