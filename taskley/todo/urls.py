@@ -19,12 +19,14 @@ urlpatterns = [
     path('dashboard', views.dashboard, name="dashboard"),
 
 
-    path('create-task', views.create_task, name="create-task"),
+    path('create-task', views.createTask, name="create-task"),
 
 
-    path('view-tasks', views.view_task, name="view-tasks" ),
+    path('view-tasks', views.viewTask, name="view-tasks" ),
 
-    path('view-tasks', views.view_task, name="view-tasks" ),
+    
+    path('update-task/<str:pk>/', views.updateTask, name="update-tasks" ),
+
 
 
 

@@ -80,11 +80,14 @@ def createTask(request):
 
 
 
-Login_required(login_url='my-login')
-
+@Login_required(login_url='my-login')
 def viewTask(request):
     current_user = request.user.id
     task = Task.objects.all().filter(user=current_user)
     context = {'task':task}
     return render(request, 'profile/view-task.html', context=context)
 
+
+@Login_required(login_url='my-login')
+def updateTask(request, pk):
+    task = Task.objects.get(id=pk)
