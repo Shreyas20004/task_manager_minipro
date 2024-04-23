@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
 
 from django import forms
-from . models import Task
+from . models import Task,Profile
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -27,6 +27,7 @@ class CreateTaskForm(forms.ModelForm):
         model = Task
         fields = ['Title', 'content']
         exclude = ['user']
+
     
     
     
@@ -36,3 +37,12 @@ class UpdateUserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email',]
         exclude = ['password1','password2',]
+
+
+
+class UpdateProfileForm(forms.ModelForm):
+    profile_pic = forms.ImageField(widget=forms.FileInput(attrs={'class':'form-control-file'}))
+
+    class Meta:
+        model = Profile
+        fields = [ 'profile_pic' ]

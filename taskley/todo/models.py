@@ -13,7 +13,10 @@ class Task(models.Model):
 
 
 class Profile(models.Model):
-    profile_pic = models.ImageField(null=True, blank=True, default='')   
+    profile_pic = models.ImageField(null=True, blank=True, default='default.jpg') 
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+  
     
 
     
