@@ -22,9 +22,9 @@
     <form method="post" autocomplete="off">
         {% csrf_token %}
         {{form.Title|as_crispy_field}}
-        <br><br>
+        <br>
         {{form.content|as_crispy_field}}
-        <br><br>
+        <br>
         <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Create Task">
     </form>
 </div>
