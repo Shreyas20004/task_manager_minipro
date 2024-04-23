@@ -8,6 +8,11 @@ urlpatterns = [
     
     
     path('dashboard', views.dashboard, name="dashboard"),
+    
+    path('profile-management', views.profile_management, name="profile-management"),
+    
+    
+    path('delete-account', views.deleteAccount, name="delete-account"),
 
 
     path('create-task', views.createTask, name="create-task"),

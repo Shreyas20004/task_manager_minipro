@@ -28,3 +28,11 @@ class CreateTaskForm(forms.ModelForm):
         fields = ['Title', 'content']
         exclude = ['user']
     
+    
+    
+class UpdateUserForm(forms.ModelForm):
+    password = None 
+    class Meta:
+        model = User
+        fields = ['username', 'email',]
+        exclude = ['password1','password2',]

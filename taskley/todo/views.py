@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Task
 from django.http import HttpResponse
-from .forms import CreateUserForm, LoginForm, CreateTaskForm
+from .forms import CreateUserForm, LoginForm, CreateTaskForm , UpdateUserForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
@@ -60,6 +60,19 @@ def view_task(request):
 def dashboard(request):
     return render(request, 'profile/dashboard.html')
 
+@login_required(login_url='my-login')
+def profile_management(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST,instance = request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect("dashboard")
+    user_form = UpdateUserForm(instance=request.user)
+    context ={"user_form": user_form}
+    return render(request, 'profile/profile-management.html',context=context)
+        
+
+
 def user_logout(request):
     auth.logout(request)
     return redirect("")
@@ -110,3 +123,13 @@ def deleteTask(request, pk):
         task.delete()
         return redirect('view-tasks')
     return render(request, 'profile/delete-task.html')
+
+
+@login_required(login_url='my-login')
+def deleteAccount(request):
+    if request.method == 'POST':
+        deleteUser = User.objects.get(username=request.user)
+        deleteUser.delete()
+        return redirect("")
+    
+    return  render(request, "profile/delete-account.html")
