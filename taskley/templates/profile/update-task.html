@@ -19,7 +19,7 @@
         <br>
         <form method="post" autocomplete="off">
             {% csrf_token %}
-            {{form.title|as_crispy_field}}
+            {{form.Title|as_crispy_field}}
             <br><br>
             {{form.content|as_crispy_field}}
             <br><br>
