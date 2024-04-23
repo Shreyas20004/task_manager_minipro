@@ -7,6 +7,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
 
 from django.contrib.auth.decorators import login_required
+from  django.contrib import messages
 
 def home(request):
     return render(request, 'index.html')
@@ -17,6 +18,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "User registration was succesful!")
             return redirect("my-login")
         
     context = {'form': form}
