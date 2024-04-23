@@ -8,9 +8,9 @@
         <meta name="viewport" content="width-devide-width", initial-scale=1, maximum-scale=1/>
         <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <title>Taskly | Update Task</title>
     </head>
-    {% include 'base.html' %}
-
+    {% include 'profile/base.html' %}
     <br>
 
     <div class="container bg-white shadow-md p-5 form-layout">
@@ -23,7 +23,9 @@
             <br><br>
             {{form.content|as_crispy_field}}
             <br><br>
-            <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Submit">
+            <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Update Task">
+            <br><br>
+            <a href="{% url 'view-tasks' %}">Go back</a>
         </form>
     </div>
 </html>

@@ -10,26 +10,23 @@
         <meta name="viewport" content="width-devide-width", initial-scale=1, maximum-scale=1/>
         <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <title>Taskly | Create Task</title>
     </head>
-    {% include 'base.html' %}
+    {% include 'profile/base.html' %}
 
     <br>
 
-    <h3 class="text-center"> My Tasks </h3>
+    <h3 class="text-center"> Create Tasks </h3>
     <hr>
-    <br>
 
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <h3>Create a Task ! </h3>
-        <br>
-        <br>
+    <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 20px;">
         <form method="post" autocomplete="off">
             {% csrf_token %}
             {{form.Title|as_crispy_field}}
             <br><br>
             {{form.content|as_crispy_field}}
             <br><br>
-            <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Submit">
+            <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Create Task">
         </form>
     </div>
 </html>
