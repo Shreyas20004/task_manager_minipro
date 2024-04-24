@@ -35,7 +35,7 @@
         <hr>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form_2}}
+            {{form_2.profile_pic|as_crispy_field}}
             <br><br>
             
             <input type="submit" class="btn btn-primary navbar-btn" type="submit" value="Update Profile Picture">
